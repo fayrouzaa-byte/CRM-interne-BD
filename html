@@ -1,0 +1,256 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.db{padding:1.5rem 1rem;}
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:1.5rem;}
+.kpi{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 14px;}
+.kpi-lbl{font-size:11px;color:var(--color-text-secondary);margin-bottom:5px;}
+.kpi-val{font-size:22px;font-weight:500;color:var(--color-text-primary);line-height:1;}
+.kpi-sub{font-size:10px;color:var(--color-text-secondary);margin-top:3px;}
+.charts-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:1.5rem;}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.125rem;}
+.card-title{font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px;}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem;align-items:center;}
+.filter-lbl{font-size:11px;color:var(--color-text-secondary);margin-right:2px;}
+.pill{display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);transition:all .15s;}
+.pill.active{border-color:transparent;}
+.pill-all.active{background:#E6F1FB;color:#0C447C;}
+.pill-advisory.active{background:#EEEDFE;color:#3C3489;}
+.pill-audit.active{background:#E1F5EE;color:#085041;}
+.pill-tax.active{background:#FAEEDA;color:#633806;}
+.pill-juridique.active{background:#FAECE7;color:#712B13;}
+.pill-gti.active{background:#E6F1FB;color:#185FA5;}
+.tbl-wrap{overflow-x:auto;}
+table{width:100%;font-size:12px;border-collapse:collapse;table-layout:fixed;}
+th{text-align:left;color:var(--color-text-secondary);font-weight:500;padding:8px 10px;border-bottom:0.5px solid var(--color-border-tertiary);font-size:11px;white-space:nowrap;}
+td{padding:8px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tr.hidden{display:none;}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:500;white-space:nowrap;}
+.b-advisory{background:#EEEDFE;color:#3C3489;}
+.b-audit{background:#E1F5EE;color:#085041;}
+.b-tax{background:#FAEEDA;color:#633806;}
+.b-juridique{background:#FAECE7;color:#712B13;}
+.b-gti{background:#E6F1FB;color:#0C447C;}
+.b-active{background:#EAF3DE;color:#27500A;}
+.b-lost{background:#FCEBEB;color:#791F1F;}
+.b-nosubmit{background:#F1EFE8;color:#444441;}
+.b-banque{background:#E6F1FB;color:#0C447C;}
+.b-industrie{background:#FAEEDA;color:#633806;}
+.b-public{background:#EEEDFE;color:#3C3489;}
+.b-assurance{background:#E1F5EE;color:#085041;}
+.b-pharma{background:#FAECE7;color:#712B13;}
+.b-international{background:#F1EFE8;color:#444441;}
+.legend-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px;font-size:11px;color:var(--color-text-secondary);}
+.leg{display:flex;align-items:center;gap:4px;}
+.dot{width:9px;height:9px;border-radius:2px;display:inline-block;}
+.stat-bar{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.stat-bar-lbl{font-size:11px;color:var(--color-text-secondary);width:80px;flex-shrink:0;}
+.stat-bar-track{flex:1;height:7px;background:var(--color-background-secondary);border-radius:4px;overflow:hidden;}
+.stat-bar-fill{height:100%;border-radius:4px;}
+.stat-bar-val{font-size:11px;color:var(--color-text-primary);font-weight:500;width:20px;text-align:right;flex-shrink:0;}
+.service-card{border-radius:var(--border-radius-md);padding:10px 12px;margin-bottom:8px;border:0.5px solid var(--color-border-tertiary);}
+</style>
+
+<div class="db">
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Base de données commerciale Feyrouz MEHALAINE — 19 offres classifiées par service depuis mars 2026</h2>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
+  <div>
+    <div style="font-size:17px;font-weight:500;color:var(--color-text-primary);">Base de données commerciale</div>
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px;">Feyrouz MEHALAINE · MCBD · mars – juin 2026 · 19 opportunités</div>
+  </div>
+  <div style="text-align:right;">
+    <div style="font-size:10px;color:var(--color-text-secondary);">Taux de conversion</div>
+    <div style="font-size:20px;font-weight:500;color:#1D9E75;">79%</div>
+  </div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-lbl">Total offres</div><div class="kpi-val" style="color:#185FA5;">19</div><div class="kpi-sub">depuis intégration</div></div>
+  <div class="kpi"><div class="kpi-lbl">Advisory</div><div class="kpi-val" style="color:#534AB7;">8</div><div class="kpi-sub">42% du portefeuille</div></div>
+  <div class="kpi"><div class="kpi-lbl">Audit</div><div class="kpi-val" style="color:#0F6E56;">5</div><div class="kpi-sub">26% du portefeuille</div></div>
+  <div class="kpi"><div class="kpi-lbl">Tax & Juridique</div><div class="kpi-val" style="color:#854F0B;">3</div><div class="kpi-sub">16% du portefeuille</div></div>
+  <div class="kpi"><div class="kpi-lbl">GTI réseau intl.</div><div class="kpi-val" style="color:#185FA5;">3</div><div class="kpi-sub">BNP · Visa UAE · Schneider</div></div>
+</div>
+
+<div class="charts-row">
+  <div class="card">
+    <div class="card-title">Répartition par service</div>
+    <div class="legend-row">
+      <span class="leg"><span class="dot" style="background:#534AB7;"></span>Advisory 8</span>
+      <span class="leg"><span class="dot" style="background:#1D9E75;"></span>Audit 5</span>
+      <span class="leg"><span class="dot" style="background:#BA7517;"></span>Tax 2</span>
+      <span class="leg"><span class="dot" style="background:#993C1D;"></span>Juridique 1</span>
+      <span class="leg"><span class="dot" style="background:#185FA5;"></span>GTI 3</span>
+    </div>
+    <div style="position:relative;height:170px;"><canvas id="c1" role="img" aria-label="Répartition Advisory 8, Audit 5, Tax 2, Juridique 1, GTI 3">Advisory 8, Audit 5, Tax 2, Juridique 1, GTI réseau 3.</canvas></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Statut par service</div>
+    <div style="margin-top:4px;">
+      <div class="stat-bar"><div class="stat-bar-lbl">Advisory</div><div class="stat-bar-track"><div class="stat-bar-fill" style="width:75%;background:#534AB7;"></div></div><div class="stat-bar-val">6/8</div></div>
+      <div class="stat-bar"><div class="stat-bar-lbl">Audit</div><div class="stat-bar-track"><div class="stat-bar-fill" style="width:60%;background:#1D9E75;"></div></div><div class="stat-bar-val">3/5</div></div>
+      <div class="stat-bar"><div class="stat-bar-lbl">Tax</div><div class="stat-bar-track"><div class="stat-bar-fill" style="width:100%;background:#BA7517;"></div></div><div class="stat-bar-val">2/2</div></div>
+      <div class="stat-bar"><div class="stat-bar-lbl">Juridique</div><div class="stat-bar-track"><div class="stat-bar-fill" style="width:100%;background:#993C1D;"></div></div><div class="stat-bar-val">1/1</div></div>
+      <div class="stat-bar"><div class="stat-bar-lbl">GTI réseau</div><div class="stat-bar-track"><div class="stat-bar-fill" style="width:100%;background:#185FA5;"></div></div><div class="stat-bar-val">3/3</div></div>
+    </div>
+    <div style="margin-top:12px;font-size:10px;color:var(--color-text-secondary);">Offres actives ou soumises / total</div>
+  </div>
+  <div class="card">
+    <div class="card-title">Clients par secteur</div>
+    <div style="position:relative;height:170px;"><canvas id="c2" role="img" aria-label="Secteurs : Banque 7, Industrie/Énergie 5, Secteur public 2, Assurance 1, Pharma 1, International 3">Banque 7, Industrie/Énergie 5, Secteur public 2, Assurance 1, Pharma 1, International 3.</canvas></div>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:1.5rem;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+    <div class="card-title" style="margin-bottom:0;">Toutes les opportunités</div>
+    <div id="count-lbl" style="font-size:11px;color:var(--color-text-secondary);">19 opportunités</div>
+  </div>
+  <div class="filters">
+    <span class="filter-lbl">Service :</span>
+    <span class="pill pill-all active" onclick="filter('all')">Tous</span>
+    <span class="pill pill-advisory" onclick="filter('advisory')">Advisory</span>
+    <span class="pill pill-audit" onclick="filter('audit')">Audit</span>
+    <span class="pill pill-tax" onclick="filter('tax')">Tax</span>
+    <span class="pill pill-juridique" onclick="filter('juridique')">Juridique</span>
+    <span class="pill pill-gti" onclick="filter('gti')">GTI réseau</span>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <colgroup>
+        <col style="width:34%"><col style="width:22%"><col style="width:13%"><col style="width:13%"><col style="width:9%"><col style="width:9%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Opportunité</th><th>Client</th><th>Service</th><th>Secteur</th><th>Périmètre</th><th>Statut</th>
+        </tr>
+      </thead>
+      <tbody id="tbl-body">
+        <tr data-svc="advisory"><td>Plan stratégique EPE SIH SPA</td><td>SIH Invest. Hôtelière</td><td><span class="badge b-advisory">Advisory</span></td><td><span class="badge b-industrie">Hôtellerie</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="advisory"><td>Accompagnement levée de fonds</td><td>Hyundai Algérie</td><td><span class="badge b-advisory">Advisory</span></td><td><span class="badge b-industrie">Automobile</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="advisory"><td>Étude Technico Économique</td><td>Sawafom (Indoomie)</td><td><span class="badge b-advisory">Advisory</span></td><td><span class="badge b-industrie">Industrie</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="advisory"><td>Plan stratégique Banque 2027-2030</td><td>BEA</td><td><span class="badge b-advisory">Advisory</span></td><td><span class="badge b-banque">Banque</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="advisory"><td>Business Plan Quinquennal 2026-2030</td><td>Banque développement local</td><td><span class="badge b-advisory">Advisory</span></td><td><span class="badge b-banque">Banque</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="advisory"><td>Standards processus SWIFT</td><td>Gulf Bank Algeria - AGB</td><td><span class="badge b-advisory">Advisory</span></td><td><span class="badge b-banque">Banque</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="advisory"><td>Procédure passation de marchés</td><td>ARPCE</td><td><span class="badge b-advisory">Advisory</span></td><td><span class="badge b-public">Secteur public</span></td><td>Local</td><td><span class="badge b-nosubmit">Non soumise*</span></td></tr>
+        <tr data-svc="advisory"><td>Cartographie des risques</td><td>SONELGAZ / DCTM</td><td><span class="badge b-advisory">Advisory</span></td><td><span class="badge b-industrie">Énergie</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="audit"><td>Audit Fiscal</td><td>NATIXIS Algérie</td><td><span class="badge b-audit">Audit</span></td><td><span class="badge b-banque">Banque</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="audit"><td>Audit Core system SAGA</td><td>AXA Assurances Algérie</td><td><span class="badge b-audit">Audit</span></td><td><span class="badge b-assurance">Assurance</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="audit"><td>Audit financier et de gestion</td><td>Unicity Pharma</td><td><span class="badge b-audit">Audit</span></td><td><span class="badge b-pharma">Pharma</span></td><td>Local</td><td><span class="badge b-lost">Perdue</span></td></tr>
+        <tr data-svc="audit"><td>Cybersécurité</td><td>SATIM</td><td><span class="badge b-audit">Audit</span></td><td><span class="badge b-banque">Banque</span></td><td>Local</td><td><span class="badge b-lost">Perdue</span></td></tr>
+        <tr data-svc="audit"><td>Évaluation maturité dispositifs</td><td>SATIM</td><td><span class="badge b-audit">Audit</span></td><td><span class="badge b-banque">Banque</span></td><td>Local</td><td><span class="badge b-lost">Perdue</span></td></tr>
+        <tr data-svc="tax"><td>Conseil fiscal</td><td>GEOLOG</td><td><span class="badge b-tax">Tax</span></td><td><span class="badge b-industrie">Industrie</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="tax"><td>Procédure inventaire de stock</td><td>BF AL DJAZAIR SPA</td><td><span class="badge b-tax">Tax</span></td><td><span class="badge b-industrie">Industrie</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="juridique"><td>Analyse juridique conformité activité</td><td>EPE ASMIDAL Spa</td><td><span class="badge b-juridique">Juridique</span></td><td><span class="badge b-public">Secteur public</span></td><td>Local</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="gti"><td>Projet BNP Paribas</td><td>BNP Paribas</td><td><span class="badge b-gti">GTI réseau</span></td><td><span class="badge b-banque">Banque</span></td><td>International</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="gti"><td>AML / Blanchiment d'argent</td><td>Visa UAE</td><td><span class="badge b-gti">GTI réseau</span></td><td><span class="badge b-banque">Banque</span></td><td>International</td><td><span class="badge b-active">Active</span></td></tr>
+        <tr data-svc="gti"><td>Commissariat au compte</td><td>Schneider Electric</td><td><span class="badge b-gti">GTI réseau</span></td><td><span class="badge b-industrie">Industrie</span></td><td>International</td><td><span class="badge b-active">Active</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="font-size:10px;color:var(--color-text-secondary);margin-top:8px;">* ARPCE non soumise : profils requis non disponibles en interne</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem;">
+  <div class="card">
+    <div class="card-title">Points forts du portefeuille</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <i class="ti ti-trending-up" style="font-size:16px;color:#1D9E75;margin-top:1px;" aria-hidden="true"></i>
+        <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">Diversification sectorielle forte</div><div style="font-size:11px;color:var(--color-text-secondary);">Banque, industrie, énergie, assurance, pharma, secteur public</div></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <i class="ti ti-world" style="font-size:16px;color:#185FA5;margin-top:1px;" aria-hidden="true"></i>
+        <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">Exposition internationale dès le départ</div><div style="font-size:11px;color:var(--color-text-secondary);">3 offres GTI : BNP Paribas, Visa UAE, Schneider Electric</div></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <i class="ti ti-building-bank" style="font-size:16px;color:#534AB7;margin-top:1px;" aria-hidden="true"></i>
+        <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">Leadership sur le secteur bancaire</div><div style="font-size:11px;color:var(--color-text-secondary);">7 clients banque/finance dont BEA, BNP, Gulf Bank, NATIXIS</div></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <i class="ti ti-chart-line" style="font-size:16px;color:#BA7517;margin-top:1px;" aria-hidden="true"></i>
+        <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">79% de taux de conversion</div><div style="font-size:11px;color:var(--color-text-secondary);">15 offres actives ou soumises sur 19 (hors ARPCE)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Axes de développement identifiés</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <i class="ti ti-lock-open" style="font-size:16px;color:#E24B4A;margin-top:1px;" aria-hidden="true"></i>
+        <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">SATIM : 2 offres perdues consécutives</div><div style="font-size:11px;color:var(--color-text-secondary);">Cybersécurité + évaluation maturité — profils techniques à mobiliser</div></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <i class="ti ti-user-plus" style="font-size:16px;color:#E24B4A;margin-top:1px;" aria-hidden="true"></i>
+        <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">ARPCE : opportunité non exploitée</div><div style="font-size:11px;color:var(--color-text-secondary);">Absence des profils qui maitrisent le sujet de la mission</div></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <i class="ti ti-refresh" style="font-size:16px;color:#BA7517;margin-top:1px;" aria-hidden="true"></i>
+        <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">Outsourcing : service non encore couvert</div><div style="font-size:11px;color:var(--color-text-secondary);">Aucune offre Outsourcing dans le pipeline — piste à explorer</div></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <i class="ti ti-arrows-right-left" style="font-size:16px;color:#534AB7;margin-top:1px;" aria-hidden="true"></i>
+        <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">Cross-selling à activer</div><div style="font-size:11px;color:var(--color-text-secondary);">Clients Advisory pourraient bénéficier de missions Audit ou Tax</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const tc = isDark ? '#c8c7bf' : '#5F5E5A';
+const gc = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.07)';
+
+new Chart(document.getElementById('c1'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Advisory','Audit','Tax','Juridique','GTI réseau'],
+    datasets: [{
+      data: [8,5,2,1,3],
+      backgroundColor: ['#534AB7','#1D9E75','#BA7517','#993C1D','#185FA5'],
+      borderWidth: 0, hoverOffset: 5
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, cutout: '60%',
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ' '+c.label+' : '+c.raw } } }
+  }
+});
+
+new Chart(document.getElementById('c2'), {
+  type: 'bar',
+  data: {
+    labels: ['Banque','Industrie','Intl.','Secteur pub.','Assurance','Pharma'],
+    datasets: [{
+      data: [7,5,3,2,1,1],
+      backgroundColor: ['#185FA5','#BA7517','#888780','#534AB7','#1D9E75','#993C1D'],
+      borderWidth: 0, borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: tc, font: { size: 10 }, autoSkip: false, maxRotation: 30 }, grid: { display: false } },
+      y: { ticks: { color: tc, font: { size: 10 }, stepSize: 1 }, grid: { color: gc }, min: 0, max: 9 }
+    }
+  }
+});
+
+function filter(svc) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  document.querySelector('.pill-'+(svc==='all'?'all':svc)).classList.add('active');
+  const rows = document.querySelectorAll('#tbl-body tr');
+  let count = 0;
+  rows.forEach(r => {
+    const show = svc === 'all' || r.dataset.svc === svc;
+    r.classList.toggle('hidden', !show);
+    if(show) count++;
+  });
+  document.getElementById('count-lbl').textContent = count + ' opportunité' + (count > 1 ? 's' : '');
+}
+</script>
